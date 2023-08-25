@@ -14,7 +14,7 @@ interface TodoDao {
     fun getTodoList(): Flow<List<TodoModel>>
 
     @Query("SELECT * FROM todomodel WHERE id=:id")
-    suspend fun getTodo(id: Int): TodoModel
+    suspend fun getTodo(id: Int): TodoModel?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveTodo(todo: TodoModel)
