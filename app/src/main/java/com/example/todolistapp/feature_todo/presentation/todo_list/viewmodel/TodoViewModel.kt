@@ -1,4 +1,4 @@
-package com.example.todolistapp.feature_todo.presentation.viewmodel
+package com.example.todolistapp.feature_todo.presentation.todo_list.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
