@@ -43,6 +43,7 @@ import com.example.todolistapp.feature_todo.presentation.todo_list.component.Ord
 import com.example.todolistapp.feature_todo.presentation.todo_list.component.TodoItem
 import com.example.todolistapp.feature_todo.presentation.todo_list.event.TodoListEvents
 import com.example.todolistapp.feature_todo.presentation.todo_list.viewmodel.TodoViewModel
+import com.example.todolistapp.feature_todo.presentation.util.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,11 +64,11 @@ fun TodoListScreen(
                 modifier = Modifier
                     .clip(CircleShape),
                 onClick = {
-
+                    navigation.navigate(Screen.AddEditScreen.route)
                 },
-                contentColor = MaterialTheme.colorScheme.background
+                contentColor = MaterialTheme.colorScheme.primary
             ) {
-                Icon(imageVector= Icons.Default.Add,contentDescription = "add todo", tint = MaterialTheme.colorScheme.primary)
+                Icon(imageVector= Icons.Default.Add,contentDescription = "add todo")
             }
         }
     ) { _ ->

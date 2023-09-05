@@ -20,6 +20,6 @@ interface TodoDao {
     suspend fun saveTodo(todo: TodoModel)
 
     @Delete
-    fun deleteTodo(todo: TodoModel)
+    suspend fun deleteTodo(todo: TodoModel)
 
 }

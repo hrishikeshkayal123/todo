@@ -32,8 +32,8 @@ import com.example.todolistapp.feature_todo.domain.model.TodoModel
 fun TodoItem(
     modifier:Modifier = Modifier,
     item: TodoModel,
-    cornerRadius: Dp = 10.dp,
-    bendCornerWidth: Dp = 35.dp,
+    cornerRadius: Dp = 6.dp,
+    bendCornerWidth: Dp = 30.dp,
     onnDeleteClick:() -> Unit
 ) {
     Box(modifier = modifier) {
@@ -57,8 +57,8 @@ fun TodoItem(
                     color = Color(
                         ColorUtils.blendARGB(item.color,Color.Black.hashCode(),0.2f)
                     ),
-                    topLeft= Offset(size.width-bendCornerWidth.toPx(),-100f),
-                    size = Size(bendCornerWidth.toPx(),bendCornerWidth.toPx()),
+                    topLeft= Offset(size.width-bendCornerWidth.toPx(),-10f),
+                    size = Size(bendCornerWidth.toPx()+10f,bendCornerWidth.toPx()+10f),
                     cornerRadius = CornerRadius( cornerRadius.toPx())
                 )
             }
@@ -71,16 +71,16 @@ fun TodoItem(
         ) {
             Text(
                 text = item.title,
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.headlineSmall,
+                color = Color.Black,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = item.body,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurface,
+                style = MaterialTheme.typography.bodyLarge,
+                color = Color.Black,
                 maxLines = 6,
                 overflow = TextOverflow.Ellipsis
             )
@@ -88,7 +88,8 @@ fun TodoItem(
         IconButton(
             modifier = Modifier.align(Alignment.BottomEnd),
             onClick = onnDeleteClick) {
-            Icon(imageVector = Icons.Default.Delete, contentDescription = "delete")
+            Icon(imageVector = Icons.Default.Delete, contentDescription = "delete", tint = Color.Black)
         }
     }
+    Spacer(modifier = Modifier.height(8.dp))
 }
