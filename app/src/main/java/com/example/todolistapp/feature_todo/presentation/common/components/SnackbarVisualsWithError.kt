@@ -17,10 +17,11 @@ import androidx.compose.ui.unit.dp
 class SnackbarVisualsWithError(
     override val message: String,
     val isError: Boolean,
-    val errorLabel:String?=null
+    val label:String?=null,
+    val onClick:(()->Unit)?=null
 ) : SnackbarVisuals {
     override val actionLabel: String
-        get() = if (isError) errorLabel?:"ERROR" else "OK"
+        get() = if (isError) label?:"ERROR" else label?:"OK"
     override val withDismissAction: Boolean
         get() = false
     override val duration: SnackbarDuration
@@ -31,6 +32,7 @@ class SnackbarVisualsWithError(
 fun snackBarCommon(snackBarState: SnackbarHostState) {
     SnackbarHost(snackBarState){ data ->
         val isError = (data.visuals as? SnackbarVisualsWithError)?.isError ?: false
+        val onClick = (data.visuals as? SnackbarVisualsWithError)?.onClick
         val buttonColor = if (isError) {
             ButtonDefaults.textButtonColors(
                 containerColor = MaterialTheme.colorScheme.errorContainer,
@@ -47,7 +49,10 @@ fun snackBarCommon(snackBarState: SnackbarHostState) {
                 .padding(12.dp),
             action = {
                 TextButton(
-                    onClick = { if (isError) data.dismiss() else data.performAction() },
+                    onClick = {
+                        data.dismiss()
+                        onClick?.invoke()
+                              },
                     colors = buttonColor
                 ) { Text(data.visuals.actionLabel ?: "") }
             }

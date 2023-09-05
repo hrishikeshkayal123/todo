@@ -87,7 +87,7 @@ fun AddEditScreen(
                             SnackbarVisualsWithError(
                                 "${event.message}",
                                 isError = true,
-                                errorLabel = "Dismiss"
+                                label = "Dismiss"
                             )
                         )
                     }
